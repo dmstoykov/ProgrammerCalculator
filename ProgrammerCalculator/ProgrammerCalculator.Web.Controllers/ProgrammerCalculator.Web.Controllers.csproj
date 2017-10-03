@@ -67,5 +67,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProgrammerCalculator.Services.Contacts\ProgrammerCalculator.Services.Contacts.csproj">
+      <Project>{E7E50E68-50DA-401F-9F59-7613C22A06ED}</Project>
+      <Name>ProgrammerCalculator.Services.Contacts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

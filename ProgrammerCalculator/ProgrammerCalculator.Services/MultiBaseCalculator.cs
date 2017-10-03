@@ -10,7 +10,6 @@ namespace ProgrammerCalculator.Services
         private string lastInputString;
 
         public MultiBaseCalculator(INummericBaseConverter baseConverter)
-            : base()
         {
             this.baseConverter = baseConverter;
             this.currentResult = 0;

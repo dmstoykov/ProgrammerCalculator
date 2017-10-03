@@ -3,7 +3,7 @@ using ProgrammerCalculator.Services.Contacts;
 
 namespace ProgrammerCalculator.Services.Abstract
 {
-    public abstract class GenericCalculator : ICalculator
+    public abstract class GenericCalculator
     {
         private long currentResult;
         private string lastInputString;
