@@ -11,6 +11,7 @@ namespace ProgrammerCalculator.Web.Controllers
     {
         private readonly ICalculator calculatorService;
 
+        // Should probably add NummericBaseConverter to convert final result to active nummeric base
         public HomeController(ICalculator calculatorService)
         {
             this.calculatorService = calculatorService;
@@ -28,12 +29,41 @@ namespace ProgrammerCalculator.Web.Controllers
             return View();
         }
 
+        // Validate number input to accept only certain values
+        public ActionResult InputNumber(string numberValue)
+        {
+            return this.Content(numberValue);
+        }
+
         // Should pass => string buttonValue, int numberBase ( get number base from active radio button of avalaible bases )
-        // Also validate number input to accept only certain values
-        public ActionResult InputNumber(int numberValue)
+        public ActionResult Add()
         {
             //this.calculatorService.Add(numberValue.ToString(), 10);
-            return this.Content(numberValue.ToString());
+            return this.Content(string.Empty);
+        }
+
+        public ActionResult Subtract()
+        {
+            //this.calculatorService.Substract();
+            return this.Content(string.Empty);
+        }
+
+        public ActionResult Multiply()
+        {
+            //this.calculatorService.Multiply();
+            return this.Content(string.Empty);
+        }
+
+        public ActionResult Divide()
+        {
+            //this.calculatorService.Divide();
+            return this.Content(string.Empty);
+        }
+
+        public ActionResult Evaluate()
+        {
+            //var result = this.calculatorService.CurrentResult;
+            return this.Content(string.Empty);
         }
     }
 }

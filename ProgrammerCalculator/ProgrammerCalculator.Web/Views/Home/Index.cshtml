@@ -17,8 +17,8 @@
                 <div class="col-md-1 calc-button">
                     @Ajax.ActionLink(i.ToString(), "InputNumber", new
                {
-                   numberValue = i
-               },
+                   numberValue = i.ToString()
+                    },
                     new AjaxOptions()
                     {
                         InsertionMode = InsertionMode.InsertAfter,
@@ -33,7 +33,7 @@
                 @Ajax.ActionLink("-", "Subtract", new { },
                     new AjaxOptions()
                     {
-                        InsertionMode = InsertionMode.InsertAfter,
+                        InsertionMode = InsertionMode.Replace,
                         UpdateTargetId = "calcInput",
                     },
                     new { @class = "calc-number" })
@@ -42,7 +42,7 @@
                 @Ajax.ActionLink("+", "Add", new { },
                     new AjaxOptions()
                     {
-                        InsertionMode = InsertionMode.InsertAfter,
+                        InsertionMode = InsertionMode.Replace,
                         UpdateTargetId = "calcInput",
                     },
                     new { @class = "calc-number" })
@@ -51,7 +51,7 @@
                 @Ajax.ActionLink("*", "Multiply", new { },
                     new AjaxOptions()
                     {
-                        InsertionMode = InsertionMode.InsertAfter,
+                        InsertionMode = InsertionMode.Replace,
                         UpdateTargetId = "calcInput",
                     },
                     new { @class = "calc-number" })
@@ -60,7 +60,7 @@
                 @Ajax.ActionLink("/", "Divide", new { },
                     new AjaxOptions()
                     {
-                        InsertionMode = InsertionMode.InsertAfter,
+                        InsertionMode = InsertionMode.Replace,
                         UpdateTargetId = "calcInput",
                     },
                     new { @class = "calc-number" })
@@ -69,7 +69,7 @@
                 @Ajax.ActionLink("=", "Evaluate", new { },
                     new AjaxOptions()
                     {
-                        InsertionMode = InsertionMode.InsertAfter,
+                        InsertionMode = InsertionMode.Replace,
                         UpdateTargetId = "calcInput",
                     },
                     new { @class = "calc-number" })
