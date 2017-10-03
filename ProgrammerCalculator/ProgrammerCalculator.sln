@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgrammerCalculator.Web.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgrammerCalculator.Web.Models", "ProgrammerCalculator.Web.Models\ProgrammerCalculator.Web.Models.csproj", "{079C45BE-225B-4E72-B01C-BF56D2BF6622}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{70A6D228-0A04-4A0B-8977-6C272FD5F852}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgrammerCalculator.Services", "ProgrammerCalculator.Services\ProgrammerCalculator.Services.csproj", "{4043CFE2-FD33-4206-A658-62F1B49340A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,10 @@ Global
 		{079C45BE-225B-4E72-B01C-BF56D2BF6622}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{079C45BE-225B-4E72-B01C-BF56D2BF6622}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{079C45BE-225B-4E72-B01C-BF56D2BF6622}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4043CFE2-FD33-4206-A658-62F1B49340A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4043CFE2-FD33-4206-A658-62F1B49340A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4043CFE2-FD33-4206-A658-62F1B49340A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4043CFE2-FD33-4206-A658-62F1B49340A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +45,7 @@ Global
 		{473CA00D-72AA-4944-8CAB-119516A053BE} = {3DB0C366-7AE8-4182-941C-EBBC0C625399}
 		{85ADCB4C-7895-432B-A904-459B95CA185F} = {3DB0C366-7AE8-4182-941C-EBBC0C625399}
 		{079C45BE-225B-4E72-B01C-BF56D2BF6622} = {3DB0C366-7AE8-4182-941C-EBBC0C625399}
+		{4043CFE2-FD33-4206-A658-62F1B49340A0} = {70A6D228-0A04-4A0B-8977-6C272FD5F852}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CCFF6894-AC77-467A-A390-C92CED052EC5}
