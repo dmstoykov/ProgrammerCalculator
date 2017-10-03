@@ -1,0 +1,44 @@
+﻿body {
+    background: #272c2f url(https://goo.gl/KMUPT);
+    color: #333;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    -webkit-font-smoothing: antialiased;
+}
+
+#calcInput {
+    background-color: white;
+    padding: 30px;
+    height: 60px;
+    border: 0;
+    border-bottom: 8px solid #eee;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 4rem;
+    font-weight: 300;
+    letter-spacing: 0.3rem;
+    text-align: right;
+}
+
+ul li:hover {
+    background: #eee;
+    -webkit-transition: all 0.1s;
+}
+
+.number-container div:nth-child(4n+4), .number-container div:last-child {
+    margin: 0 0 1px 0;
+    width: 80px;
+}
+
+.calc-button {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #eaeaea;
+}
+
+.calc-number{
+    color:black;
+    margin:auto;
+    text-decoration:none;
+    font-size:2rem;
+    font-weight:300;
+}
