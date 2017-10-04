@@ -30,6 +30,9 @@ namespace ProgrammerCalculator.Web
 
             bundles.Add(new StyleBundle("~/Content/Custom/Calculator").Include(
                     "~/Content/Custom/Calculator/calculator-styles.css"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/Custom/Calculator").Include(
+               "~/Scripts/Custom/Calculator/main.js"));
         }
     }
 }
