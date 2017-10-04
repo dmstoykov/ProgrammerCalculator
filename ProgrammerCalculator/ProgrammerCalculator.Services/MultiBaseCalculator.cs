@@ -37,9 +37,8 @@ namespace ProgrammerCalculator.Services
             var addent = this.baseConverter.ConvertToDecimal(number, fromBase);
             this.operands.Enqueue(addent);
 
-            if (this.lastOperator == OperatorType.None)
+            if (this.operands.Count < 2)
             {
-                this.lastOperator = OperatorType.Addition;
                 return "0";
             }
             else
@@ -56,9 +55,8 @@ namespace ProgrammerCalculator.Services
             var subtractor = this.baseConverter.ConvertToDecimal(number, fromBase);
             this.operands.Enqueue(subtractor);
 
-            if (this.lastOperator == OperatorType.None)
+            if (this.operands.Count < 2)
             {
-                this.lastOperator = OperatorType.Subtraction;
                 return "0";
             }
             else
@@ -75,9 +73,8 @@ namespace ProgrammerCalculator.Services
             var multiplicator = this.baseConverter.ConvertToDecimal(number, fromBase);
             this.operands.Enqueue(multiplicator);
 
-            if (this.lastOperator == OperatorType.None)
+            if (this.operands.Count < 2)
             {
-                this.lastOperator = OperatorType.Multiplication;
                 return "0";
             }
             else
@@ -95,9 +92,8 @@ namespace ProgrammerCalculator.Services
 
             this.operands.Enqueue(divisor);
 
-            if (this.lastOperator == OperatorType.None)
+            if (this.operands.Count < 2)
             {
-                this.lastOperator = OperatorType.Division;
                 return "0";
             }
             else
@@ -147,6 +143,11 @@ namespace ProgrammerCalculator.Services
         {
             this.lastOperator = OperatorType.None;
             this.operands = new Queue<long>();
+        }
+
+        public void ChangeLastOperator(OperatorType operatorType)
+        {
+            this.lastOperator = operatorType;
         }
     }
 }

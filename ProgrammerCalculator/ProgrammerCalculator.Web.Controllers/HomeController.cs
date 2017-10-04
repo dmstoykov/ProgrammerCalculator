@@ -27,7 +27,7 @@ namespace ProgrammerCalculator.Web.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-            
+
             return View();
         }
 
@@ -44,7 +44,7 @@ namespace ProgrammerCalculator.Web.Controllers
                 inExpression = false;
                 return this.Content(numberValue);
             }
-            
+
 
             return this.Content(calcInput + numberValue);
         }
@@ -52,6 +52,8 @@ namespace ProgrammerCalculator.Web.Controllers
         // Should pass => string buttonValue, int numberBase ( get number base from active radio button of avalaible bases )
         public ActionResult Add(string calcInput, int fromBase)
         {
+            this.calculatorService.ChangeLastOperator(Services.Infrastructure.Enumerations.OperatorType.Addition);
+
             if (usedOperator)
             {
                 return this.Content(calcInput);
@@ -70,6 +72,8 @@ namespace ProgrammerCalculator.Web.Controllers
 
         public ActionResult Subtract(string calcInput, int fromBase)
         {
+            this.calculatorService.ChangeLastOperator(Services.Infrastructure.Enumerations.OperatorType.Subtraction);
+
             if (usedOperator)
             {
                 return this.Content(calcInput);
@@ -88,6 +92,8 @@ namespace ProgrammerCalculator.Web.Controllers
 
         public ActionResult Multiply(string calcInput, int fromBase)
         {
+            this.calculatorService.ChangeLastOperator(Services.Infrastructure.Enumerations.OperatorType.Multiplication);
+
             if (usedOperator)
             {
                 return this.Content(calcInput);
@@ -106,6 +112,8 @@ namespace ProgrammerCalculator.Web.Controllers
 
         public ActionResult Divide(string calcInput, int fromBase)
         {
+            this.calculatorService.ChangeLastOperator(Services.Infrastructure.Enumerations.OperatorType.Division);
+
             if (usedOperator)
             {
                 return this.Content(calcInput);
