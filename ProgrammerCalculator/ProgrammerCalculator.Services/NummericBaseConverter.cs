@@ -7,7 +7,7 @@ namespace ProgrammerCalculator.Services
     {
         public string ConvertFromDecimal(long input, int toBase)
         {
-            string result = Convert.ToString(input, toBase);
+            string result = Convert.ToString(input, toBase).ToUpper();
 
             return result;
         }

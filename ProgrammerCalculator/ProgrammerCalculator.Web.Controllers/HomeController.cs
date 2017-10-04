@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ProgrammerCalculator.Services.Infrastructure.Contracts;
 
@@ -13,7 +10,6 @@ namespace ProgrammerCalculator.Web.Controllers
         private static bool inExpression = false;
         private static bool usedOperator = false;
 
-        // Should probably add NummericBaseConverter to convert final result to active nummeric base
         public HomeController(ICalculator calculatorService)
         {
             this.calculatorService = calculatorService;
@@ -49,7 +45,6 @@ namespace ProgrammerCalculator.Web.Controllers
             return this.Content(calcInput + numberValue);
         }
 
-        // Should pass => string buttonValue, int numberBase ( get number base from active radio button of avalaible bases )
         public ActionResult Add(string calcInput, int fromBase)
         {
             this.calculatorService.ChangeLastOperator(Services.Infrastructure.Enumerations.OperatorType.Addition);

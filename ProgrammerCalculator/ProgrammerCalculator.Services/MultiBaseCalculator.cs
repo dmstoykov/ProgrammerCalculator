@@ -39,7 +39,7 @@ namespace ProgrammerCalculator.Services
 
             if (this.operands.Count < 2)
             {
-                return "0";
+                return number;
             }
             else
             {
@@ -57,7 +57,7 @@ namespace ProgrammerCalculator.Services
 
             if (this.operands.Count < 2)
             {
-                return "0";
+                return number;
             }
             else
             {
@@ -75,7 +75,7 @@ namespace ProgrammerCalculator.Services
 
             if (this.operands.Count < 2)
             {
-                return "0";
+                return number;
             }
             else
             {
@@ -94,7 +94,7 @@ namespace ProgrammerCalculator.Services
 
             if (this.operands.Count < 2)
             {
-                return "0";
+                return number;
             }
             else
             {
