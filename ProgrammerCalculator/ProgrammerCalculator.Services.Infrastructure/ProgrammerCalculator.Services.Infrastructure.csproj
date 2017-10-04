@@ -44,7 +44,7 @@
     <Compile Include="Contracts\ICalculator.cs" />
     <Compile Include="Contracts\IExpressionManager.cs" />
     <Compile Include="Contracts\INummericBaseConverter.cs" />
-    <Compile Include="Enumerations\Sign.cs" />
+    <Compile Include="Enumerations\OperatorType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

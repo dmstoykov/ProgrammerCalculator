@@ -10,6 +10,7 @@ namespace ProgrammerCalculator.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ICalculator calculatorService;
+        private static bool inExpression = false;
 
         // Should probably add NummericBaseConverter to convert final result to active nummeric base
         public HomeController(ICalculator calculatorService)
@@ -32,38 +33,76 @@ namespace ProgrammerCalculator.Web.Controllers
         // Validate number input to accept only certain values
         public ActionResult InputNumber(string numberValue, string calcInput)
         {
+            if (calcInput == "0" || inExpression)
+            {
+                inExpression = false;
+                return this.Content(numberValue);
+            }
+
             return this.Content(calcInput + numberValue);
         }
 
         // Should pass => string buttonValue, int numberBase ( get number base from active radio button of avalaible bases )
-        public ActionResult Add()
+        public ActionResult Add(string calcInput)
         {
-            //this.calculatorService.Add(numberValue.ToString(), 10);
-            return this.Content(string.Empty);
+            var result = this.calculatorService.Add(calcInput, 10);
+
+            if (result > long.Parse(calcInput))
+            {
+                inExpression = true;
+            }
+
+            return this.Content(result.ToString());
         }
 
-        public ActionResult Subtract()
+        public ActionResult Subtract(string calcInput)
         {
-            //this.calculatorService.Substract();
-            return this.Content(string.Empty);
+            var result = this.calculatorService.Substract(calcInput, 10);
+
+            if (this.calculatorService.LastOperator != Services.Infrastructure.Enumerations.OperatorType.None)
+            {
+                inExpression = true;
+            }
+
+            return this.Content(result.ToString());
         }
 
-        public ActionResult Multiply()
+        public ActionResult Multiply(string calcInput)
         {
-            //this.calculatorService.Multiply();
-            return this.Content(string.Empty);
+            var result = this.calculatorService.Multiply(calcInput, 10);
+
+            if (this.calculatorService.LastOperator != Services.Infrastructure.Enumerations.OperatorType.None)
+            {
+                inExpression = true;
+            }
+
+            return this.Content(result.ToString());
         }
 
-        public ActionResult Divide()
+        public ActionResult Divide(string calcInput)
         {
-            //this.calculatorService.Divide();
-            return this.Content(string.Empty);
+            var result = this.calculatorService.Divide(calcInput, 10);
+
+            if (this.calculatorService.LastOperator != Services.Infrastructure.Enumerations.OperatorType.None)
+            {
+                inExpression = true;
+            }
+
+            return this.Content(result.ToString());
         }
 
-        public ActionResult Evaluate()
+        public ActionResult Evaluate(string calcInput)
         {
-            //var result = this.calculatorService.CurrentResult;
-            return this.Content(string.Empty);
+            var result = this.calculatorService.Evaluate(calcInput, 10);
+            this.calculatorService.ResetResult();
+
+            return this.Content(result.ToString());
+        }
+
+        public ActionResult ResetExpression()
+        {
+            this.calculatorService.ResetResult();
+            return this.Content("0");
         }
     }
 }

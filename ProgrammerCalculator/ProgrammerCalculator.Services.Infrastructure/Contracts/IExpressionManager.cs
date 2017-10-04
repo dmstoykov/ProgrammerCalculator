@@ -7,7 +7,7 @@ namespace ProgrammerCalculator.Services.Infrastructure.Contracts
     {
         long CurrentResult { get; }
 
-        Sign LastOperation { get; }
+        OperatorType LastOperator { get; }
 
         void ResetResult();
     }

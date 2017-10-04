@@ -8,78 +8,52 @@
 
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-
-        @using (Ajax.BeginForm("InputNumber", new
-        { },
-                        new AjaxOptions()
-                        {
-                            InsertionMode = InsertionMode.Replace,
-                            UpdateTargetId = "calcInput",
-                        },
-                        new { @class = "calc-number" })
-                    )
-        {
-            <div class="row">
-                <input id="calcInput" name="calcInput" value="" />
-            </div>
-                <div class="row number-container">
-                    @for (var i = 9; i >= 0; i--)
-                    {
-                        <div class="col-md-1 calc-button" type="submit">
-                            <input type="hidden" name="numberValue" value="@i" />
-                            <button type="submit">@i</button>
-                        </div>
-                    }
-                </div>
-
-        }
         <div class="row">
-            <div class="col-md-2 calc-button">
-                @Ajax.ActionLink("-", "Subtract", new { },
-         new AjaxOptions()
-         {
-             InsertionMode = InsertionMode.Replace,
-             UpdateTargetId = "calcInput",
-         },
-         new { @class = "calc-number" })
-            </div>
-            <div class="col-md-2 calc-button">
-                @Ajax.ActionLink("+", "Add", new { },
-                    new AjaxOptions()
-                    {
-                        InsertionMode = InsertionMode.Replace,
-                        UpdateTargetId = "calcInput",
-                    },
-                    new { @class = "calc-number" })
-            </div>
-            <div class="col-md-2 calc-button">
-                @Ajax.ActionLink("*", "Multiply", new { },
-                    new AjaxOptions()
-                    {
-                        InsertionMode = InsertionMode.Replace,
-                        UpdateTargetId = "calcInput",
-                    },
-                    new { @class = "calc-number" })
-            </div>
-            <div class="col-md-2 calc-button">
-                @Ajax.ActionLink("/", "Divide", new { },
-                    new AjaxOptions()
-                    {
-                        InsertionMode = InsertionMode.Replace,
-                        UpdateTargetId = "calcInput",
-                    },
-                    new { @class = "calc-number" })
-            </div>
-            <div class="col-md-2 calc-button">
-                @Ajax.ActionLink("=", "Evaluate", new { },
-                    new AjaxOptions()
-                    {
-                        InsertionMode = InsertionMode.Replace,
-                        UpdateTargetId = "calcInput",
-                    },
-                    new { @class = "calc-number" })
+            <div class="col-md-10">
+                <input id="calcInput" name="calcInput" disabled />
             </div>
         </div>
+        <div class="row number-container">
+            @for (var i = 9; i >= 0; i--)
+            {
+                <div class="btn btn-default col-md-1 number-button">@i</div>
+            }
+        </div>
+        <div class="row">
+            <div class="btn btn-default col-md-2 operator-button" operation="subtract">-</div>
+            <div class="btn btn-default col-md-2 operator-button" operation="add">+</div>
+            <div class="btn btn-default col-md-2 operator-button" operation="multiply">*</div>
+            <div class="btn btn-default col-md-2 operator-button" operation="divide">/</div>
+            <div class="btn btn-default col-md-2 operator-button" operation="evaluate">=</div>
+            <div class="btn btn-default col-md-2 operator-button" operation="resetexpression">C</div>
+        </div>
     </div>
-
 </div>
+
+@section scripts{
+
+    <script>
+        $('.number-button').click(function (ev) {
+            let calcInput = $('#calcInput').val();
+            let numberValue = $(ev.target).text();
+            let data = { calcInput: calcInput, numberValue: numberValue };
+
+            $.ajax("/home/inputnumber", { data: data })
+                .done(function (res) {
+                    $('#calcInput').val(res);
+                });
+        })
+
+        $('.operator-button').click(function (ev) {
+            let calcInput = $('#calcInput').val();
+            let operatorValue = $(ev.target).attr('operation');
+
+            let data = { calcInput: calcInput };
+
+            $.ajax("/home/" + operatorValue, { data: data })
+                .done(function (res) {
+                    $('#calcInput').val(res);
+                });
+        })
+    </script>
+}

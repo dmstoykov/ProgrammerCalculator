@@ -2,7 +2,7 @@
 
 namespace ProgrammerCalculator.Services.Infrastructure.Enumerations
 {
-    public enum Sign
+    public enum OperatorType
     {
         None = 0,
         Addition = 1,
