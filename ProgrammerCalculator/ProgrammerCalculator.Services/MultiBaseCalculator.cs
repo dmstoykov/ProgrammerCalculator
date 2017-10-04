@@ -1,5 +1,6 @@
 ﻿using System;
-using ProgrammerCalculator.Services.Contacts;
+using ProgrammerCalculator.Services.Infrastructure.Contracts;
+using ProgrammerCalculator.Services.Infrastructure.Enumerations;
 
 namespace ProgrammerCalculator.Services
 {
@@ -7,13 +8,13 @@ namespace ProgrammerCalculator.Services
     {
         private readonly INummericBaseConverter baseConverter;
         private long currentResult;
-        private string lastInputString;
+        private Sign lastOperation;
 
         public MultiBaseCalculator(INummericBaseConverter baseConverter)
         {
             this.baseConverter = baseConverter;
             this.currentResult = 0;
-            this.lastInputString = string.Empty;
+            this.lastOperation = Sign.None;
         }
 
         public long CurrentResult
@@ -23,17 +24,18 @@ namespace ProgrammerCalculator.Services
                 return this.currentResult;
             }
         }
-        public string LastInputString
+        public Sign LastOperation
         {
             get
             {
-                return this.lastInputString;
+                return this.lastOperation;
             }
         }
 
         public virtual void Add(string number, int fromBase)
         {
             var addent = this.baseConverter.ConvertToDecimal(number, fromBase);
+            
             this.currentResult += addent;
         }
 
@@ -53,6 +55,12 @@ namespace ProgrammerCalculator.Services
         {
             var divisor = this.baseConverter.ConvertToDecimal(number, fromBase);
             this.currentResult /= divisor;
+        }
+
+        public void ResetResult()
+        {
+            this.lastOperation = Sign.None;
+            this.currentResult = 0;
         }
     }
 }

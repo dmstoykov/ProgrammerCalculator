@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProgrammerCalculator.Services.Contacts
+namespace ProgrammerCalculator.Services.Infrastructure.Contracts
 {
     public interface IBasicMathOperations
     {

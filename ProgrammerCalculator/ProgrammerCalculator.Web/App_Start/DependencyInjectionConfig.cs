@@ -11,7 +11,7 @@ namespace ProgrammerCalculator.Web.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Ninject.Extensions.Conventions;
-    using ProgrammerCalculator.Services.Contacts;
+    using ProgrammerCalculator.Services.Infrastructure.Contracts;
     using ProgrammerCalculator.Services;
 
     public static class DependencyInjectionConfig

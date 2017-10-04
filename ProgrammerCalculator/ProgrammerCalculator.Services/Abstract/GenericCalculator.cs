@@ -1,5 +1,5 @@
 ﻿using System;
-using ProgrammerCalculator.Services.Contacts;
+using ProgrammerCalculator.Services.Infrastructure.Contracts;
 
 namespace ProgrammerCalculator.Services.Abstract
 {

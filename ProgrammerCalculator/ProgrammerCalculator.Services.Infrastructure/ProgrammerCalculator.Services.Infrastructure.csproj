@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E7E50E68-50DA-401F-9F59-7613C22A06ED}</ProjectGuid>
+    <ProjectGuid>{FA6AAB6A-8862-43B2-B5A4-C11397EDA524}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProgrammerCalculator.Services.Contacts</RootNamespace>
-    <AssemblyName>ProgrammerCalculator.Services.Contacts</AssemblyName>
+    <RootNamespace>ProgrammerCalculator.Services.Infrastructure</RootNamespace>
+    <AssemblyName>ProgrammerCalculator.Services.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,10 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IBasicMathOperations.cs" />
-    <Compile Include="ICalculator.cs" />
-    <Compile Include="IExpressionManager.cs" />
-    <Compile Include="INummericBaseConverter.cs" />
+    <Compile Include="Contracts\IBasicMathOperations.cs" />
+    <Compile Include="Contracts\ICalculator.cs" />
+    <Compile Include="Contracts\IExpressionManager.cs" />
+    <Compile Include="Contracts\INummericBaseConverter.cs" />
+    <Compile Include="Enumerations\Sign.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

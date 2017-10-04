@@ -46,11 +46,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProgrammerCalculator.Services.Contacts\ProgrammerCalculator.Services.Contacts.csproj">
-      <Project>{e7e50e68-50da-401f-9f59-7613c22a06ed}</Project>
-      <Name>ProgrammerCalculator.Services.Contacts</Name>
+    <ProjectReference Include="..\ProgrammerCalculator.Services.Infrastructure\ProgrammerCalculator.Services.Infrastructure.csproj">
+      <Project>{fa6aab6a-8862-43b2-b5a4-c11397eda524}</Project>
+      <Name>ProgrammerCalculator.Services.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
