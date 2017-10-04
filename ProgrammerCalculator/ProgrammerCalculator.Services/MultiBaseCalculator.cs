@@ -8,7 +8,6 @@ namespace ProgrammerCalculator.Services
     public class MultiBaseCalculator : ICalculator
     {
         private readonly INummericBaseConverter baseConverter;
-        private long currentResult;
         private OperatorType lastOperator;
         private Queue<long> operands;
 
@@ -16,7 +15,6 @@ namespace ProgrammerCalculator.Services
         {
             this.baseConverter = baseConverter;
             this.operands = new Queue<long>();
-            this.currentResult = 0;
         }
 
         public long CurrentResult
@@ -34,7 +32,7 @@ namespace ProgrammerCalculator.Services
             }
         }
 
-        public virtual long Add(string number, int fromBase)
+        public string Add(string number, int fromBase)
         {
             var addent = this.baseConverter.ConvertToDecimal(number, fromBase);
             this.operands.Enqueue(addent);
@@ -42,7 +40,7 @@ namespace ProgrammerCalculator.Services
             if (this.lastOperator == OperatorType.None)
             {
                 this.lastOperator = OperatorType.Addition;
-                return 0;
+                return "0";
             }
             else
             {
@@ -50,10 +48,10 @@ namespace ProgrammerCalculator.Services
                 this.lastOperator = OperatorType.Addition;
             }
 
-            return this.CurrentResult;
+            return this.baseConverter.ConvertFromDecimal(this.CurrentResult, fromBase);
         }
 
-        public virtual long Substract(string number, int fromBase)
+        public string Substract(string number, int fromBase)
         {
             var subtractor = this.baseConverter.ConvertToDecimal(number, fromBase);
             this.operands.Enqueue(subtractor);
@@ -61,7 +59,7 @@ namespace ProgrammerCalculator.Services
             if (this.lastOperator == OperatorType.None)
             {
                 this.lastOperator = OperatorType.Subtraction;
-                return 0;
+                return "0";
             }
             else
             {
@@ -69,10 +67,10 @@ namespace ProgrammerCalculator.Services
                 this.lastOperator = OperatorType.Subtraction;
             }
 
-            return this.CurrentResult;
+            return this.baseConverter.ConvertFromDecimal(this.CurrentResult, fromBase);
         }
 
-        public virtual long Multiply(string number, int fromBase)
+        public string Multiply(string number, int fromBase)
         {
             var multiplicator = this.baseConverter.ConvertToDecimal(number, fromBase);
             this.operands.Enqueue(multiplicator);
@@ -80,7 +78,7 @@ namespace ProgrammerCalculator.Services
             if (this.lastOperator == OperatorType.None)
             {
                 this.lastOperator = OperatorType.Multiplication;
-                return 0;
+                return "0";
             }
             else
             {
@@ -88,10 +86,10 @@ namespace ProgrammerCalculator.Services
                 this.lastOperator = OperatorType.Multiplication;
             }
 
-            return this.CurrentResult;
+            return this.baseConverter.ConvertFromDecimal(this.CurrentResult, fromBase);
         }
 
-        public virtual long Divide(string number, int fromBase)
+        public string Divide(string number, int fromBase)
         {
             var divisor = this.baseConverter.ConvertToDecimal(number, fromBase);
 
@@ -100,7 +98,7 @@ namespace ProgrammerCalculator.Services
             if (this.lastOperator == OperatorType.None)
             {
                 this.lastOperator = OperatorType.Division;
-                return 0;
+                return "0";
             }
             else
             {
@@ -108,7 +106,7 @@ namespace ProgrammerCalculator.Services
                 this.lastOperator = OperatorType.Division;
             }
 
-            return this.CurrentResult;
+            return this.baseConverter.ConvertFromDecimal(this.CurrentResult, fromBase);
         }
 
         private void Evaluate(OperatorType operatorType)
@@ -135,14 +133,14 @@ namespace ProgrammerCalculator.Services
             }
         }
 
-        public long Evaluate(string number, int fromBase)
+        public string Evaluate(string number, int fromBase)
         {
             var newOperand = this.baseConverter.ConvertToDecimal(number, fromBase);
             this.operands.Enqueue(newOperand);
 
             this.Evaluate(this.LastOperator);
 
-            return this.CurrentResult;
+            return this.baseConverter.ConvertFromDecimal(this.CurrentResult, fromBase);
         }
 
         public void ResetResult()
