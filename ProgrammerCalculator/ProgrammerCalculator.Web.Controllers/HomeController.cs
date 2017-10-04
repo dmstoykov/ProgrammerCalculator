@@ -30,9 +30,9 @@ namespace ProgrammerCalculator.Web.Controllers
         }
 
         // Validate number input to accept only certain values
-        public ActionResult InputNumber(string numberValue)
+        public ActionResult InputNumber(string numberValue, string calcInput)
         {
-            return this.Content(numberValue);
+            return this.Content(calcInput + numberValue);
         }
 
         // Should pass => string buttonValue, int numberBase ( get number base from active radio button of avalaible bases )

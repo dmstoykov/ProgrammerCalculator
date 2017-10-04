@@ -8,27 +8,31 @@
 
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <div class="row">
-            <div id="calcInput"></div>
-        </div>
-        <div class="row number-container">
-            @for (var i = 9; i >= 0; i--)
-            {
-                using (Ajax.BeginForm("InputNumber", new
-                { numberValue = i.ToString() },
-                    new AjaxOptions()
-                    {
-                        InsertionMode = InsertionMode.InsertAfter,
-                        UpdateTargetId = "calcInput",
-                    },
-                    new { @class = "calc-number" })
-                )
-                {
-                    <button class="col-md-1 calc-button" type="submit">@i</button>
-                }
 
-            }
-        </div>
+        @using (Ajax.BeginForm("InputNumber", new
+        { },
+                        new AjaxOptions()
+                        {
+                            InsertionMode = InsertionMode.Replace,
+                            UpdateTargetId = "calcInput",
+                        },
+                        new { @class = "calc-number" })
+                    )
+        {
+            <div class="row">
+                <input id="calcInput" name="calcInput" value="" />
+            </div>
+                <div class="row number-container">
+                    @for (var i = 9; i >= 0; i--)
+                    {
+                        <div class="col-md-1 calc-button" type="submit">
+                            <input type="hidden" name="numberValue" value="@i" />
+                            <button type="submit">@i</button>
+                        </div>
+                    }
+                </div>
+
+        }
         <div class="row">
             <div class="col-md-2 calc-button">
                 @Ajax.ActionLink("-", "Subtract", new { },
