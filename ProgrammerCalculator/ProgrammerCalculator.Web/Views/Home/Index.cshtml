@@ -7,50 +7,55 @@
 }
 
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4 col-sm-12 card-shadow">
         <div class="row">
-            <div class="col-md-8">
-                <input id="calcInput" name="calcInput" class="form-control" disabled />
+            <div class="col-md-12 text-center">
+                <label class="baseTypeBtn"><input type="radio" name="baseType" value="2">Bin</label>
+                <label class="baseTypeBtn"><input type="radio" name="baseType" value="8">Oct</label>
+                <label class="baseTypeBtn"><input type="radio" name="baseType" value="10" checked>Dec</label>
+                <label class="baseTypeBtn"><input type="radio" name="baseType" value="16">Hex</label>
             </div>
         </div>
         <div class="row">
-            <label><input type="radio" name="baseType" value="2">Bin</label>
-            <label><input type="radio" name="baseType" value="8">Oct</label>
-            <label><input type="radio" name="baseType" value="10" checked>Dec</label>
-            <label><input type="radio" name="baseType" value="16">Hex</label>
+            <div class="col-md-12">
+                <input id="calcInput" name="calcInput" disabled />
+            </div>
         </div>
         <div class="number-container">
-            <div class="row">
-                <div class="btn btn-default col-md-2 col-md-offset-4 operator-button" operation="resetexpression">C</div>
-                <div class="btn btn-default col-md-1 operator-button" operation="divide">/</div>
-            </div>
-            <div class="row">
-                <div class="btn btn-default col-md-1 number-button">A</div>
-                <div class="btn btn-default col-md-1 number-button">B</div>
-                <div class="btn btn-default col-md-2 number-button">9</div>
-                <div class="btn btn-default col-md-2 number-button">8</div>
-                <div class="btn btn-default col-md-2 number-button">7</div>
-                <div class="btn btn-default col-md-1 operator-button" operation="multiply">*</div>
-            </div>
-            <div class="row">
-                <div class="btn btn-default col-md-1 number-button">C</div>
-                <div class="btn btn-default col-md-1 number-button">D</div>
-                <div class="btn btn-default col-md-2 number-button">6</div>
-                <div class="btn btn-default col-md-2 number-button">5</div>
-                <div class="btn btn-default col-md-2 number-button">4</div>
-                <div class="btn btn-default col-md-1 operator-button" operation="subtract">-</div>
-            </div>
-            <div class="row">
-                <div class="btn btn-default col-md-1 number-button">E</div>
-                <div class="btn btn-default col-md-1 number-button">F</div>
-                <div class="btn btn-default col-md-2 number-button">3</div>
-                <div class="btn btn-default col-md-2 number-button">2</div>
-                <div class="btn btn-default col-md-2 number-button">1</div>
-                <div class="btn btn-default col-md-1 operator-button" operation="add">+</div>
-            </div>
-            <div class="row">
-                <div class="btn btn-default col-md-2 col-md-offset-2 number-button">0</div>
-                <div class="btn btn-default col-md-3 operator-button" operation="evaluate">=</div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="btn btn-default col-md-2 number-button">A</div>
+                    <div class="btn btn-default col-md-2 number-button">B</div>
+                    <div class="btn btn-default col-md-2 number-button">7</div>
+                    <div class="btn btn-default col-md-2 number-button">8</div>
+                    <div class="btn btn-default col-md-2 number-button">9</div>
+                    <div class="btn btn-default col-md-1 operator-button" operation="divide">/</div>
+                    <div class="btn btn-default col-md-1 operator-button" operation="resetexpression">C</div>
+                </div>
+                <div class="row">
+                    <div class="btn btn-default col-md-2 number-button">C</div>
+                    <div class="btn btn-default col-md-2 number-button">D</div>
+                    <div class="btn btn-default col-md-2 number-button">4</div>
+                    <div class="btn btn-default col-md-2 number-button">5</div>
+                    <div class="btn btn-default col-md-2 number-button">6</div>
+                    <div class="btn btn-default col-md-2 operator-button" operation="multiply">*</div>
+                </div>
+                <div class="row">
+                    <div class="btn btn-default col-md-2 number-button">E</div>
+                    <div class="btn btn-default col-md-2 number-button">F</div>
+                    <div class="btn btn-default col-md-2 number-button">1</div>
+                    <div class="btn btn-default col-md-2 number-button">2</div>
+                    <div class="btn btn-default col-md-2 number-button">3</div>
+                    <div class="btn btn-default col-md-2 operator-button" operation="subtract">-</div>
+                </div>
+                <div class="row">
+                    <div class="btn btn-default col-md-2" disabled="disabled">&nbsp;</div>
+                    <div class="btn btn-default col-md-2" disabled="disabled">&nbsp;</div>
+                    <div class="btn btn-default col-md-2" disabled="disabled">.</div>
+                    <div class="btn btn-default col-md-2 number-button">0</div>
+                    <div class="btn btn-default col-md-2 operator-button" operation="evaluate">=</div>
+                    <div class="btn btn-default col-md-2 operator-button" operation="add">+</div>
+                </div>
             </div>
         </div>
     </div>

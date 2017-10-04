@@ -39,7 +39,8 @@ namespace ProgrammerCalculator.Services
 
             if (this.operands.Count < 2)
             {
-                return number;
+                this.lastOperator = OperatorType.Addition;
+                return string.Empty;
             }
             else
             {
@@ -57,7 +58,8 @@ namespace ProgrammerCalculator.Services
 
             if (this.operands.Count < 2)
             {
-                return number;
+                this.lastOperator = OperatorType.Subtraction;
+                return string.Empty;
             }
             else
             {
@@ -75,7 +77,8 @@ namespace ProgrammerCalculator.Services
 
             if (this.operands.Count < 2)
             {
-                return number;
+                this.lastOperator = OperatorType.Multiplication;
+                return string.Empty;
             }
             else
             {
@@ -94,7 +97,8 @@ namespace ProgrammerCalculator.Services
 
             if (this.operands.Count < 2)
             {
-                return number;
+                this.lastOperator = OperatorType.Division;
+                return string.Empty;
             }
             else
             {
@@ -147,7 +151,10 @@ namespace ProgrammerCalculator.Services
 
         public void ChangeLastOperator(OperatorType operatorType)
         {
-            this.lastOperator = operatorType;
+            if (this.operands.Count < 2)
+            {
+                this.lastOperator = operatorType;
+            }
         }
     }
 }

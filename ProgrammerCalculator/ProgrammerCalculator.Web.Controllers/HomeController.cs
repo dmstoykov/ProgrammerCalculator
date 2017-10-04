@@ -41,10 +41,9 @@ namespace ProgrammerCalculator.Web.Controllers
 
         public ActionResult Add(string calcInput, int fromBase)
         {
-            this.calculatorService.ChangeLastOperator(OperatorType.Addition);
-
             if (usedOperator)
             {
+                this.calculatorService.ChangeLastOperator(OperatorType.Addition);
                 return this.Content(calcInput);
             }
 
@@ -56,10 +55,9 @@ namespace ProgrammerCalculator.Web.Controllers
 
         public ActionResult Subtract(string calcInput, int fromBase)
         {
-            this.calculatorService.ChangeLastOperator(OperatorType.Subtraction);
-
             if (usedOperator)
             {
+                this.calculatorService.ChangeLastOperator(OperatorType.Subtraction);
                 return this.Content(calcInput);
             }
 
@@ -71,10 +69,9 @@ namespace ProgrammerCalculator.Web.Controllers
 
         public ActionResult Multiply(string calcInput, int fromBase)
         {
-            this.calculatorService.ChangeLastOperator(OperatorType.Multiplication);
-
             if (usedOperator)
             {
+                this.calculatorService.ChangeLastOperator(OperatorType.Multiplication);
                 return this.Content(calcInput);
             }
 
@@ -86,10 +83,9 @@ namespace ProgrammerCalculator.Web.Controllers
 
         public ActionResult Divide(string calcInput, int fromBase)
         {
-            this.calculatorService.ChangeLastOperator(OperatorType.Division);
-
             if (usedOperator)
             {
+                this.calculatorService.ChangeLastOperator(OperatorType.Division);
                 return this.Content(calcInput);
             }
 

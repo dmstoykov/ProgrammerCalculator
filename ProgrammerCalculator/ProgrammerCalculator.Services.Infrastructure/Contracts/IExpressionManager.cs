@@ -10,6 +10,7 @@ namespace ProgrammerCalculator.Services.Infrastructure.Contracts
         OperatorType LastOperator { get; }
 
         void ChangeLastOperator(OperatorType operatorType);
+
         void ResetResult();
     }
 }
