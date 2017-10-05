@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProgrammerCalculator.Services.Infrastructure.Contracts
+namespace ProgrammerCalculator.Helpers.Contracts
 {
     public interface ICalculator : IBasicMathOperations, IExpressionManager
     {

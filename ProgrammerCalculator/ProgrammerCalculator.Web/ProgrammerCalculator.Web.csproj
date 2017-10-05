@@ -222,13 +222,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProgrammerCalculator.Services.Infrastructure\ProgrammerCalculator.Services.Infrastructure.csproj">
-      <Project>{fa6aab6a-8862-43b2-b5a4-c11397eda524}</Project>
-      <Name>ProgrammerCalculator.Services.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProgrammerCalculator.Services\ProgrammerCalculator.Services.csproj">
-      <Project>{4043CFE2-FD33-4206-A658-62F1B49340A0}</Project>
-      <Name>ProgrammerCalculator.Services</Name>
+    <ProjectReference Include="..\ProgrammerCalculator.Helpers\ProgrammerCalculator.Helpers.csproj">
+      <Project>{96787f1a-7613-451d-8287-fbb9fe702d6e}</Project>
+      <Name>ProgrammerCalculator.Helpers</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

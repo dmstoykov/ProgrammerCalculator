@@ -1,6 +1,6 @@
 ﻿using System;
-using ProgrammerCalculator.Services.Infrastructure.Contracts;
-using ProgrammerCalculator.Services.Infrastructure.Enumerations;
+using ProgrammerCalculator.Helpers.Contracts;
+using ProgrammerCalculator.Helpers.Enumerations;
 using System.Collections.Generic;
 
 namespace ProgrammerCalculator.Services
@@ -75,7 +75,7 @@ namespace ProgrammerCalculator.Services
                 return ResetFieldCharacter;
             }
 
-            var operand = this.baseConverter.ConvertToDecimal(number, fromBase);
+            var operand = this.baseConverter.BaseToDec(number, fromBase);
 
             this.operands.Enqueue(operand);
 
@@ -92,7 +92,7 @@ namespace ProgrammerCalculator.Services
                 this.isOperatorSelected = true;
             }
 
-            return this.baseConverter.ConvertFromDecimal(this.CurrentResult, fromBase);
+            return this.baseConverter.DecToBase(this.CurrentResult, fromBase);
         }
 
         private void Evaluate(OperatorType operatorType)
@@ -126,12 +126,12 @@ namespace ProgrammerCalculator.Services
                 return number;
             }
 
-            var newOperand = this.baseConverter.ConvertToDecimal(number, fromBase);
+            var newOperand = this.baseConverter.BaseToDec(number, fromBase);
             this.operands.Enqueue(newOperand);
 
             this.Evaluate(this.operators.Peek());
 
-            return this.baseConverter.ConvertFromDecimal(this.CurrentResult, fromBase);
+            return this.baseConverter.DecToBase(this.CurrentResult, fromBase);
         }
 
         private void SwitchOperators(OperatorType operatorType)

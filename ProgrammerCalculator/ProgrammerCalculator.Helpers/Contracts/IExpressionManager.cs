@@ -1,7 +1,6 @@
 ﻿using System;
-using ProgrammerCalculator.Services.Infrastructure.Enumerations;
 
-namespace ProgrammerCalculator.Services.Infrastructure.Contracts
+namespace ProgrammerCalculator.Helpers.Contracts
 {
     public interface IExpressionManager
     {

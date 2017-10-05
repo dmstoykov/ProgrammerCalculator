@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using ProgrammerCalculator.Services.Infrastructure.Contracts;
+using ProgrammerCalculator.Helpers.Contracts;
 
 namespace ProgrammerCalculator.Web.Controllers
 {
@@ -7,13 +7,15 @@ namespace ProgrammerCalculator.Web.Controllers
     {
         private const string LeadingZeroCharacter = "0";
         private const string ResetFieldCharacter = "";
-        private const int MaxInputLength = 17;
+        private const int MaxInputLength = 16;
 
         private readonly ICalculator calculatorService;
+        private readonly INumberInputValidator inputValidator;
 
-        public HomeController(ICalculator calculatorService)
+        public HomeController(ICalculator calculatorService, INumberInputValidator inputValidator)
         {
             this.calculatorService = calculatorService;
+            this.inputValidator = inputValidator;
         }
 
         public ActionResult Index()
@@ -21,9 +23,9 @@ namespace ProgrammerCalculator.Web.Controllers
             return View();
         }
 
-        public ActionResult InputNumber(string numberValue, string calcInput)
+        public ActionResult InputNumber(string numberValue, string calcInput, int fromBase)
         {
-            if (calcInput.Length > MaxInputLength)
+            if (!this.inputValidator.ValidateNumber(calcInput + numberValue, fromBase))
             {
                 return this.Content(calcInput);
             }

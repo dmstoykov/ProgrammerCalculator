@@ -10,9 +10,9 @@ namespace ProgrammerCalculator.Web.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using Ninject.Extensions.Conventions;
-    using ProgrammerCalculator.Services.Infrastructure.Contracts;
+    using ProgrammerCalculator.Helpers.Contracts;
     using ProgrammerCalculator.Services;
+    using ProgrammerCalculator.Helpers.Validators;
 
     public static class DependencyInjectionConfig
     {
@@ -64,15 +64,9 @@ namespace ProgrammerCalculator.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<INumberInputValidator>().To<NumberInputValidator>();
             kernel.Bind<INummericBaseConverter>().To<NummericBaseConverter>();
             kernel.Bind<ICalculator>().To<MultiBaseCalculator>().InSingletonScope();
-
-            //kernel.Bind((x) =>
-            //{
-            //    x.FromAssemblyContaining(typeof(ICalculator))
-            //    .SelectAllClasses()
-            //    .BindDefaultInterface();
-            //});
         }        
     }
 }

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ProgrammerCalculator.Services")]
+[assembly: AssemblyTitle("ProgrammerCalculator.Helpers")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ProgrammerCalculator.Services")]
+[assembly: AssemblyProduct("ProgrammerCalculator.Helpers")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4043cfe2-fd33-4206-a658-62f1b49340a0")]
+[assembly: Guid("96787f1a-7613-451d-8287-fbb9fe702d6e")]
 
 // Version information for an assembly consists of the following four values:
 //

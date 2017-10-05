@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProgrammerCalculator.Services.Infrastructure.Enumerations
+namespace ProgrammerCalculator.Helpers.Enumerations
 {
     public enum OperatorType
     {

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FA6AAB6A-8862-43B2-B5A4-C11397EDA524}</ProjectGuid>
+    <ProjectGuid>{96787F1A-7613-451D-8287-FBB9FE702D6E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProgrammerCalculator.Services.Infrastructure</RootNamespace>
-    <AssemblyName>ProgrammerCalculator.Services.Infrastructure</AssemblyName>
+    <RootNamespace>ProgrammerCalculator.Helpers</RootNamespace>
+    <AssemblyName>ProgrammerCalculator.Helpers</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,9 +43,13 @@
     <Compile Include="Contracts\IBasicMathOperations.cs" />
     <Compile Include="Contracts\ICalculator.cs" />
     <Compile Include="Contracts\IExpressionManager.cs" />
+    <Compile Include="Contracts\INumberInputValidator.cs" />
     <Compile Include="Contracts\INummericBaseConverter.cs" />
     <Compile Include="Enumerations\OperatorType.cs" />
+    <Compile Include="MultiBaseCalculator.cs" />
+    <Compile Include="NummericBaseConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\NumberInputValidator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

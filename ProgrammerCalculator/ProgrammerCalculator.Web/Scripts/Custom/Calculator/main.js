@@ -3,7 +3,7 @@
 
     let baseType = +$("input[name='baseType']:checked").val();
     enableButtonWithValueUnder(baseType);
-})
+});
 
 function toggleButtonAvaliability(isDisabled) {
     $('.number-container .number-button').attr('disabled', isDisabled);
@@ -42,15 +42,16 @@ $("input[name='baseType']").click(function (ev) {
     }
 
     makeApiCall("/home/resetexpression", { data: {} });
-})
+});
 
 $('.number-button').click(function (ev) {
     let calcInput = $('#calcInput').val();
     let numberValue = $(ev.target).text();
-    let data = { calcInput: calcInput, numberValue: numberValue };
+    let baseType = $("input[name='baseType']:checked").val();
 
+    let data = { calcInput: calcInput, numberValue: numberValue, fromBase: baseType };
     makeApiCall("/home/inputnumber", { data: data });
-})
+});
 
 $('.operator-button').click(function (ev) {
     let calcInput = $('#calcInput').val();
@@ -60,4 +61,4 @@ $('.operator-button').click(function (ev) {
     let data = { calcInput: calcInput, fromBase: baseType };
 
     makeApiCall("/home/" + operatorValue, { data: data });
-})
+});
