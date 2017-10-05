@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\GenericCalculator.cs" />
     <Compile Include="MultiBaseCalculator.cs" />
     <Compile Include="NummericBaseConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

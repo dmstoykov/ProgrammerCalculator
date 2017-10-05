@@ -158,6 +158,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\DependencyInjectionConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -206,6 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -228,14 +230,6 @@
     <ProjectReference Include="..\ProgrammerCalculator.Services\ProgrammerCalculator.Services.csproj">
       <Project>{4043CFE2-FD33-4206-A658-62F1B49340A0}</Project>
       <Name>ProgrammerCalculator.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProgrammerCalculator.Web.Controllers\ProgrammerCalculator.Web.Controllers.csproj">
-      <Project>{85adcb4c-7895-432b-a904-459b95ca185f}</Project>
-      <Name>ProgrammerCalculator.Web.Controllers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProgrammerCalculator.Web.Models\ProgrammerCalculator.Web.Models.csproj">
-      <Project>{079c45be-225b-4e72-b01c-bf56d2bf6622}</Project>
-      <Name>ProgrammerCalculator.Web.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
