@@ -7,9 +7,7 @@ namespace ProgrammerCalculator.Services.Infrastructure.Contracts
     {
         long CurrentResult { get; }
 
-        OperatorType LastOperator { get; }
-
-        void ChangeLastOperator(OperatorType operatorType);
+        bool IsOperatorSelected { get; set; }
 
         void ResetResult();
     }

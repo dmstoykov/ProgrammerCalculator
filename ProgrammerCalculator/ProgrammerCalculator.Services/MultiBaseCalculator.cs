@@ -7,11 +7,14 @@ namespace ProgrammerCalculator.Services
 {
     public class MultiBaseCalculator : ICalculator
     {
+        private const string ResetFieldCharacter = "";
+
         private readonly INummericBaseConverter baseConverter;
-        private OperatorType lastOperator;
 
         private Queue<OperatorType> operators;
         private Queue<long> operands;
+
+        private bool isOperatorSelected;
 
         public MultiBaseCalculator(INummericBaseConverter baseConverter)
         {
@@ -27,11 +30,16 @@ namespace ProgrammerCalculator.Services
                 return this.operands.Peek();
             }
         }
-        public OperatorType LastOperator
+
+        public bool IsOperatorSelected
         {
             get
             {
-                return this.lastOperator;
+                return this.isOperatorSelected;
+            }
+            set
+            {
+                this.isOperatorSelected = value;
             }
         }
 
@@ -61,19 +69,27 @@ namespace ProgrammerCalculator.Services
 
         private string PerformOperationWithType(OperatorType operatorType, string number, int fromBase)
         {
+            if (this.isOperatorSelected)
+            {
+                this.SwitchOperators(operatorType);
+                return ResetFieldCharacter;
+            }
+
             var operand = this.baseConverter.ConvertToDecimal(number, fromBase);
 
             this.operands.Enqueue(operand);
 
             if (this.operands.Count < 2)
             {
-                this.lastOperator = operatorType;
-                return string.Empty;
+                this.operators.Enqueue(operatorType);
+                this.isOperatorSelected = true;
+                return ResetFieldCharacter;
             }
             else
             {
-                this.Evaluate(this.lastOperator);
-                this.lastOperator = operatorType;
+                this.Evaluate(this.operators.Peek());
+                this.SwitchOperators(operatorType);
+                this.isOperatorSelected = true;
             }
 
             return this.baseConverter.ConvertFromDecimal(this.CurrentResult, fromBase);
@@ -84,7 +100,7 @@ namespace ProgrammerCalculator.Services
             var firstOperand = this.operands.Dequeue();
             var secondOperand = this.operands.Dequeue();
 
-            switch (this.LastOperator)
+            switch (this.operators.Peek())
             {
                 case OperatorType.Addition:
                     this.operands.Enqueue(firstOperand + secondOperand);
@@ -105,26 +121,29 @@ namespace ProgrammerCalculator.Services
 
         public string Evaluate(string number, int fromBase)
         {
+            if (this.isOperatorSelected)
+            {
+                return number;
+            }
+
             var newOperand = this.baseConverter.ConvertToDecimal(number, fromBase);
             this.operands.Enqueue(newOperand);
 
-            this.Evaluate(this.LastOperator);
+            this.Evaluate(this.operators.Peek());
 
             return this.baseConverter.ConvertFromDecimal(this.CurrentResult, fromBase);
         }
 
-        public void ResetResult()
+        private void SwitchOperators(OperatorType operatorType)
         {
-            this.lastOperator = OperatorType.None;
-            this.operands = new Queue<long>();
+            this.operators.Dequeue();
+            this.operators.Enqueue(operatorType);
         }
 
-        public void ChangeLastOperator(OperatorType operatorType)
+        public void ResetResult()
         {
-            if (this.operands.Count < 2)
-            {
-                this.lastOperator = operatorType;
-            }
+            this.operators = new Queue<OperatorType>();
+            this.operands = new Queue<long>();
         }
     }
 }
