@@ -9,12 +9,15 @@ namespace ProgrammerCalculator.Services
     {
         private readonly INummericBaseConverter baseConverter;
         private OperatorType lastOperator;
+
+        private Queue<OperatorType> operators;
         private Queue<long> operands;
 
         public MultiBaseCalculator(INummericBaseConverter baseConverter)
         {
             this.baseConverter = baseConverter;
             this.operands = new Queue<long>();
+            this.operators = new Queue<OperatorType>();
         }
 
         public long CurrentResult
@@ -34,76 +37,43 @@ namespace ProgrammerCalculator.Services
 
         public string Add(string number, int fromBase)
         {
-            var addent = this.baseConverter.ConvertToDecimal(number, fromBase);
-            this.operands.Enqueue(addent);
-
-            if (this.operands.Count < 2)
-            {
-                this.lastOperator = OperatorType.Addition;
-                return string.Empty;
-            }
-            else
-            {
-                this.Evaluate(this.LastOperator);
-                this.lastOperator = OperatorType.Addition;
-            }
-
-            return this.baseConverter.ConvertFromDecimal(this.CurrentResult, fromBase);
+            var result = PerformOperationWithType(OperatorType.Addition, number, fromBase);
+            return result;
         }
 
         public string Substract(string number, int fromBase)
         {
-            var subtractor = this.baseConverter.ConvertToDecimal(number, fromBase);
-            this.operands.Enqueue(subtractor);
-
-            if (this.operands.Count < 2)
-            {
-                this.lastOperator = OperatorType.Subtraction;
-                return string.Empty;
-            }
-            else
-            {
-                this.Evaluate(this.lastOperator);
-                this.lastOperator = OperatorType.Subtraction;
-            }
-
-            return this.baseConverter.ConvertFromDecimal(this.CurrentResult, fromBase);
+            var result = PerformOperationWithType(OperatorType.Subtraction, number, fromBase);
+            return result;
         }
 
         public string Multiply(string number, int fromBase)
         {
-            var multiplicator = this.baseConverter.ConvertToDecimal(number, fromBase);
-            this.operands.Enqueue(multiplicator);
-
-            if (this.operands.Count < 2)
-            {
-                this.lastOperator = OperatorType.Multiplication;
-                return string.Empty;
-            }
-            else
-            {
-                this.Evaluate(this.lastOperator);
-                this.lastOperator = OperatorType.Multiplication;
-            }
-
-            return this.baseConverter.ConvertFromDecimal(this.CurrentResult, fromBase);
+            var result = PerformOperationWithType(OperatorType.Multiplication, number, fromBase);
+            return result;
         }
 
         public string Divide(string number, int fromBase)
         {
-            var divisor = this.baseConverter.ConvertToDecimal(number, fromBase);
+            var result = PerformOperationWithType(OperatorType.Division, number, fromBase);
+            return result;
+        }
 
-            this.operands.Enqueue(divisor);
+        private string PerformOperationWithType(OperatorType operatorType, string number, int fromBase)
+        {
+            var operand = this.baseConverter.ConvertToDecimal(number, fromBase);
+
+            this.operands.Enqueue(operand);
 
             if (this.operands.Count < 2)
             {
-                this.lastOperator = OperatorType.Division;
+                this.lastOperator = operatorType;
                 return string.Empty;
             }
             else
             {
                 this.Evaluate(this.lastOperator);
-                this.lastOperator = OperatorType.Division;
+                this.lastOperator = operatorType;
             }
 
             return this.baseConverter.ConvertFromDecimal(this.CurrentResult, fromBase);

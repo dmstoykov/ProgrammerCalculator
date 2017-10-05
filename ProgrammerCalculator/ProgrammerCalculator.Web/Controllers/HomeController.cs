@@ -30,6 +30,11 @@ namespace ProgrammerCalculator.Web.Controllers
         // Validate number input to accept only certain values
         public ActionResult InputNumber(string numberValue, string calcInput)
         {
+            if (calcInput.Length > 17)
+            {
+                return this.Content(calcInput);
+            }
+
             if (calcInput == "0" || usedOperator)
             {
                 usedOperator = false;
