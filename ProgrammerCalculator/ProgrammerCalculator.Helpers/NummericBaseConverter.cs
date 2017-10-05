@@ -5,19 +5,6 @@ namespace ProgrammerCalculator.Services
 {
     public class NummericBaseConverter : INummericBaseConverter
     {
-        //public string ConvertFromDecimal(long input, int toBase)
-        //{
-        //    string result = Convert.ToString(input, toBase).ToUpper();
-
-        //    return result;
-        //}
-
-        //public long ConvertToDecimal(string input, int fromBase)
-        //{
-        //    long result = Convert.ToInt64(input, fromBase);
-        //    return result;
-        //}
-
         private long Power(long number, long power)
         {
             long result = 1;
@@ -49,10 +36,9 @@ namespace ProgrammerCalculator.Services
                     digit = number[position] - 'A' + 10;
                 }
 
-                var poweredDigit = digit * Power(fromBase, i);
-
                 checked
                 {
+                    var poweredDigit = digit * Power(fromBase, i);
                     result += poweredDigit;
                 }
 

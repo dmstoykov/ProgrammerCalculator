@@ -1,46 +1,19 @@
 ﻿using System;
 using ProgrammerCalculator.Helpers.Contracts;
 using ProgrammerCalculator.Helpers.Enumerations;
-using System.Collections.Generic;
+using ProgrammerCalculator.Helpers;
 
 namespace ProgrammerCalculator.Services
 {
-    public class MultiBaseCalculator : ICalculator
+    public class MultiBaseCalculator : ExpressionManager, ICalculator
     {
         private const string ResetFieldCharacter = "";
-
         private readonly INummericBaseConverter baseConverter;
 
-        private Queue<OperatorType> operators;
-        private Queue<long> operands;
-
-        private bool isOperatorSelected;
-
         public MultiBaseCalculator(INummericBaseConverter baseConverter)
+            : base()
         {
             this.baseConverter = baseConverter;
-            this.operands = new Queue<long>();
-            this.operators = new Queue<OperatorType>();
-        }
-
-        public long CurrentResult
-        {
-            get
-            {
-                return this.operands.Peek();
-            }
-        }
-
-        public bool IsOperatorSelected
-        {
-            get
-            {
-                return this.isOperatorSelected;
-            }
-            set
-            {
-                this.isOperatorSelected = value;
-            }
         }
 
         public string Add(string number, int fromBase)
@@ -87,36 +60,22 @@ namespace ProgrammerCalculator.Services
             }
             else
             {
-                this.Evaluate(this.operators.Peek());
+                this.EvaluateExpression(this.operators.Peek());
                 this.SwitchOperators(operatorType);
                 this.isOperatorSelected = true;
             }
-
+            
             return this.baseConverter.DecToBase(this.CurrentResult, fromBase);
         }
 
-        private void Evaluate(OperatorType operatorType)
+        private void EvaluateExpression(OperatorType operatorType)
         {
             var firstOperand = this.operands.Dequeue();
             var secondOperand = this.operands.Dequeue();
 
-            switch (this.operators.Peek())
-            {
-                case OperatorType.Addition:
-                    this.operands.Enqueue(firstOperand + secondOperand);
-                    break;
-                case OperatorType.Subtraction:
-                    this.operands.Enqueue(firstOperand - secondOperand);
-                    break;
-                case OperatorType.Multiplication:
-                    this.operands.Enqueue(firstOperand * secondOperand);
-                    break;
-                case OperatorType.Division:
-                    this.operands.Enqueue(firstOperand / secondOperand);
-                    break;
-                default:
-                    break;
-            }
+            var result = this.mathOperation.Calculate(operatorType, firstOperand, secondOperand);
+
+            this.operands.Enqueue(result);
         }
 
         public string Evaluate(string number, int fromBase)
@@ -129,7 +88,7 @@ namespace ProgrammerCalculator.Services
             var newOperand = this.baseConverter.BaseToDec(number, fromBase);
             this.operands.Enqueue(newOperand);
 
-            this.Evaluate(this.operators.Peek());
+            this.EvaluateExpression(this.operators.Peek());
 
             return this.baseConverter.DecToBase(this.CurrentResult, fromBase);
         }
@@ -138,12 +97,6 @@ namespace ProgrammerCalculator.Services
         {
             this.operators.Dequeue();
             this.operators.Enqueue(operatorType);
-        }
-
-        public void ResetResult()
-        {
-            this.operators = new Queue<OperatorType>();
-            this.operands = new Queue<long>();
         }
     }
 }
