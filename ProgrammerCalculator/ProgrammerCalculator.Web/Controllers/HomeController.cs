@@ -7,12 +7,10 @@ namespace ProgrammerCalculator.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ICalculator calculatorService;
-        private readonly INumberInputValidator inputValidator;
 
-        public HomeController(ICalculator calculatorService, INumberInputValidator inputValidator)
+        public HomeController(ICalculator calculatorService)
         {
             this.calculatorService = calculatorService;
-            this.inputValidator = inputValidator;
         }
 
         public ActionResult Index()
@@ -22,11 +20,6 @@ namespace ProgrammerCalculator.Web.Controllers
 
         public ActionResult InputNumber(string numberValue, string calcInput, int fromBase)
         {
-            if (!this.inputValidator.ValidateNumber(calcInput + numberValue, fromBase))
-            {
-                return this.Content(calcInput);
-            }
-
             if (calcInput == GlobalConstants.LeadingZeroCharacter || this.calculatorService.IsOperatorSelected)
             {
                 this.calculatorService.IsOperatorSelected = false;
