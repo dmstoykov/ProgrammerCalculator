@@ -1,14 +1,11 @@
 ﻿using System.Web.Mvc;
 using ProgrammerCalculator.Helpers.Contracts;
+using ProgrammerCalculator.Helpers.Constants;
 
 namespace ProgrammerCalculator.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private const string LeadingZeroCharacter = "0";
-        private const string ResetFieldCharacter = "";
-        private const int MaxInputLength = 16;
-
         private readonly ICalculator calculatorService;
         private readonly INumberInputValidator inputValidator;
 
@@ -30,7 +27,7 @@ namespace ProgrammerCalculator.Web.Controllers
                 return this.Content(calcInput);
             }
 
-            if (calcInput == LeadingZeroCharacter || this.calculatorService.IsOperatorSelected)
+            if (calcInput == GlobalConstants.LeadingZeroCharacter || this.calculatorService.IsOperatorSelected)
             {
                 this.calculatorService.IsOperatorSelected = false;
                 return this.Content(numberValue);
@@ -78,7 +75,7 @@ namespace ProgrammerCalculator.Web.Controllers
         public ActionResult ResetExpression()
         {
             this.calculatorService.ResetResult();
-            return this.Content(LeadingZeroCharacter);
+            return this.Content(GlobalConstants.LeadingZeroCharacter);
         }
     }
 }

@@ -2,12 +2,12 @@
 using ProgrammerCalculator.Helpers.Contracts;
 using ProgrammerCalculator.Helpers.Enumerations;
 using ProgrammerCalculator.Helpers;
+using ProgrammerCalculator.Helpers.Constants;
 
 namespace ProgrammerCalculator.Services
 {
     public class MultiBaseCalculator : ExpressionManager, ICalculator
     {
-        private const string ResetFieldCharacter = "";
         private readonly INummericBaseConverter baseConverter;
 
         public MultiBaseCalculator(INummericBaseConverter baseConverter)
@@ -45,7 +45,7 @@ namespace ProgrammerCalculator.Services
             if (this.isOperatorSelected)
             {
                 this.SwitchOperators(operatorType);
-                return ResetFieldCharacter;
+                return GlobalConstants.ResetFieldCharacter;
             }
 
             var operand = this.baseConverter.BaseToDec(number, fromBase);
@@ -56,7 +56,7 @@ namespace ProgrammerCalculator.Services
             {
                 this.operators.Enqueue(operatorType);
                 this.isOperatorSelected = true;
-                return ResetFieldCharacter;
+                return GlobalConstants.ResetFieldCharacter;
             }
             else
             {

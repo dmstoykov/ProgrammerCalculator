@@ -1,6 +1,7 @@
 ﻿using System;
 using ProgrammerCalculator.Helpers.Contracts;
 using ProgrammerCalculator.Helpers.Enumerations;
+using ProgrammerCalculator.Helpers.Constants;
 
 namespace ProgrammerCalculator.Helpers.MathOperations
 {
@@ -18,7 +19,7 @@ namespace ProgrammerCalculator.Helpers.MathOperations
             }
             else
             {
-                throw new ArgumentException("Supported operations: Add, Subtract, Multiply, Divide!");
+                throw new ArgumentException(GlobalConstants.UnsupportedOperationsErrorMessage);
             }
         }
     }
