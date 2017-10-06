@@ -1,18 +1,37 @@
 ﻿using System;
 using ProgrammerCalculator.Helpers.Contracts;
 using ProgrammerCalculator.Helpers.Enumerations;
+using ProgrammerCalculator.Helpers.Constants;
 
 namespace ProgrammerCalculator.Helpers.MathOperations
 {
     public abstract class MathOperation : IMathOperation
     {
-        protected IMathOperation nextOperation;
+        private IMathOperation NextOperation { get; set; }
 
         public void SetNextOperation(IMathOperation nextOperation)
         {
-            this.nextOperation = nextOperation;
+            this.NextOperation = nextOperation;
         }
 
-        public abstract long Calculate(OperatorType operatorType, long firstOperand, long secondOperand);
+        public long Calculate(OperatorType operatorType, long firstOperand, long secondOperand)
+        {
+            var result = this.TryCalculate(operatorType, firstOperand, secondOperand);
+
+            if (result.HasValue)
+            {
+                return result.Value;
+            }
+            else if (this.NextOperation != null)
+            {
+                return this.NextOperation.Calculate(operatorType, firstOperand, secondOperand);
+            }
+            else
+            {
+                throw new InvalidOperationException(GlobalConstants.UnsupportedOperationsErrorMessage);
+            }
+        }
+
+        protected abstract long? TryCalculate(OperatorType operatorType, long firstOperand, long secondOperand);
     }
 }
