@@ -4,7 +4,7 @@ using ProgrammerCalculator.Helpers.Contracts;
 
 namespace ProgrammerCalculator.Helpers.MathOperations
 {
-    public class AddNumbers : MathOperation, IMathOperation
+    public class AddNumbers : MathOperation
     {
         protected override long? TryCalculate(OperatorType operatorType, long firstOperand, long secondOperand)
         {

@@ -4,7 +4,7 @@ using ProgrammerCalculator.Helpers.Enumerations;
 
 namespace ProgrammerCalculator.Helpers.MathOperations
 {
-    public class DivideNumbers : MathOperation, IMathOperation
+    public class DivideNumbers : MathOperation
     {
         protected override long? TryCalculate(OperatorType operatorType, long firstOperand, long secondOperand)
         {
