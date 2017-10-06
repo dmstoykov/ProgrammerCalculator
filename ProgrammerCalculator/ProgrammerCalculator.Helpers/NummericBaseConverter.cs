@@ -50,7 +50,7 @@ namespace ProgrammerCalculator.Services
 
         public string DecToBase(long numberBase10, int toBase)
         {
-            string result = "";
+            string result = string.Empty;
 
             bool negative = numberBase10 < 0;
             if (toBase != 10)
@@ -59,11 +59,13 @@ namespace ProgrammerCalculator.Services
                 {
                     numberBase10 = long.MaxValue + numberBase10 + 1;
                 }
+
                 do
                 {
                     result = baseSystem[(int)(numberBase10 % toBase)] + result;
                     numberBase10 /= toBase;
-                } while (numberBase10 > 0);
+                }
+                while (numberBase10 > 0);
 
                 if (negative)
                 {
@@ -85,6 +87,7 @@ namespace ProgrammerCalculator.Services
                     {
                         index += (mostSBit[i] - '0') << (mostSBit.Length - 1 - i);
                     }
+
                     if (index < toBase)
                     {
                         result = baseSystem[(int)index] + result.Substring(1);
