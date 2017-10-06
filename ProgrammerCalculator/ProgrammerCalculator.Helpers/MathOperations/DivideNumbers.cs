@@ -8,7 +8,7 @@ namespace ProgrammerCalculator.Helpers.MathOperations
     {
         protected override long? TryCalculate(OperatorType operatorType, long firstOperand, long secondOperand)
         {
-            if (operatorType == OperatorType.Division)
+            if (operatorType == OperatorType.Division && secondOperand != 0)
             {
                 return firstOperand / secondOperand;
             }
